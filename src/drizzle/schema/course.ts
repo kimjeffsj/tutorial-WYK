@@ -1,6 +1,6 @@
 import { relations } from "drizzle-orm";
 import { pgTable, text } from "drizzle-orm/pg-core";
-import { createdAt, id, updatedAt } from "../schemaHelper";
+import { createdAt, id, updatedAt } from "../schemaHelpers";
 import { CourseProductTable } from "./courseProduct";
 
 export const CourseTable = pgTable("courses", {
