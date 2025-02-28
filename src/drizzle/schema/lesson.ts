@@ -2,6 +2,7 @@ import { integer, pgEnum, pgTable, text, uuid } from "drizzle-orm/pg-core";
 import { createdAt, id, updatedAt } from "../schemaHelpers";
 import { CourseSectionTable } from "./courseSelect";
 import { relations } from "drizzle-orm";
+import { UserLessonCompleteTable } from "./userLessonComplete";
 
 // Preview를 이용해 구매하지 않아도 유저가 미리볻기 이후 구매할 수 있는 기회를 제공
 export const lessonStatuses = ["public", "private", "preview"] as const;
@@ -22,9 +23,10 @@ export const LessonTable = pgTable("lessons", {
   updatedAt,
 });
 
-export const LessonRelationships = relations(LessonTable, ({ one }) => ({
+export const LessonRelationships = relations(LessonTable, ({ one, many }) => ({
   section: one(CourseSectionTable, {
     fields: [LessonTable.sectionId],
     references: [CourseSectionTable.id],
   }),
+  userLessonComplete: many(UserLessonCompleteTable),
 }));
