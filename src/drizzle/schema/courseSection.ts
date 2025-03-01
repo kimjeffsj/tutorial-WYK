@@ -6,7 +6,7 @@ import { relations } from "drizzle-orm";
 export const courseSectionStatuses = ["public", "private"] as const;
 export type CourseSectionStatus = (typeof courseSectionStatuses)[number];
 export const courseSectionStatusEnum = pgEnum(
-  "course_Section_status",
+  "course_section_status",
   courseSectionStatuses
 );
 
